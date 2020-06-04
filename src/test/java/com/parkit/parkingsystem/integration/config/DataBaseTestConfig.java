@@ -31,7 +31,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
                io.printStackTrace();
            }
            return DriverManager.getConnection(
-                   "jdbc:mysql://localhost:3306/prod?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC",user ,pass );
+                   "jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC",user ,pass );
        }
 
     public void closeConnection(Connection con){
