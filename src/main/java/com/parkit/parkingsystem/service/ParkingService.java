@@ -13,6 +13,10 @@ import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 
 public class ParkingService {
+	/**
+	 * This class is the parent class which call InputReaderUtil, ParkingSpotDAO and TicketDAO
+	 *
+	 */
 
 	public Logger logger = LogManager.getLogger("ParkingService");
 

@@ -1,6 +1,11 @@
 package com.parkit.parkingsystem.constants;
 
 public class DBConstants {
+    /**
+     * Two mysql command have been added
+     * GET_SAME_REG_OCCUPIED in order to be sure their is no regNumber doppler in the database
+     * GET_REGNUMBER in order to verify if the regNumber is available for fare reduction
+     */
 
     public static final String GET_NEXT_PARKING_SPOT = "select min(PARKING_NUMBER) from parking where AVAILABLE = true and TYPE = ?";
     public static final String GET_SAME_REG_OCCUPIED = "SELECT TICKET.VEHICLE_REG_NUMBER FROM TICKET where VEHICLE_REG_NUMBER = ? AND OUT_TIME IS NULL";

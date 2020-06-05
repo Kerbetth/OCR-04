@@ -18,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -33,6 +34,11 @@ import com.parkit.parkingsystem.model.Ticket;
 
 @ExtendWith(MockitoExtension.class)
 public class ParkingSpotDAOTest {
+
+	/**
+	 * This class of unit test is testing all the methods of ParkingSpotDAO,
+	 *
+	 */
 
 	private static ParkingSpotDAO parkingSpotDAO;
 	private static ParkingSpot parkingSpot;
@@ -77,7 +83,8 @@ public class ParkingSpotDAOTest {
 	}
 	
 	@Test
-	public void shouldReturnParkingSpotNumber3After2VehiculeIncoming() {
+	@DisplayName("update Parking should return parking spot number 3 after 2 vehicule incoming")
+	public void updateParkingShouldReturnParkingSpotNumber3After2VehiculeIncoming() {
 		parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 		ParkingSpot parkingSpot2 = new ParkingSpot(2, ParkingType.CAR, false);
 		// ACT
@@ -90,7 +97,8 @@ public class ParkingSpotDAOTest {
 	}
 	
 	@Test
-	public void shouldReturnParkingSpotNumber2After2VehiculeIncomingAndFirstExiting() {
+	@DisplayName("update Parking should return parking spot number 1 after 2 vehicule incoming and 1 exit")
+	public void updateParkingShouldReturnParkingSpotNumber1After2VehiculeIncomingAndFirstExiting() {
 		parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 		ParkingSpot parkingSpot2 = new ParkingSpot(2, ParkingType.CAR, false);
 		// ACT
@@ -103,8 +111,10 @@ public class ParkingSpotDAOTest {
 		// ASSERT
 		assertEquals(1, result);
 	}
+
 	@Test
-	public void shouldReturnException_WhenDBConnectionFail() throws ClassNotFoundException, SQLException, IOException {
+	@DisplayName("update Parking should return exception If DB fail")
+	public void updateParkingShouldReturnException_WhenDBConnectionFail() throws ClassNotFoundException, SQLException, IOException {
 
 		// GIVEN
 		ParkingSpotDAO parkingSpotDAO3 = new ParkingSpotDAO();

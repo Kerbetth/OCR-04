@@ -14,8 +14,12 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 
 public class ParkingSpotDAO {
 
-	private Logger logger = LogManager.getLogger("ParkingSpotDAO");
+	/**
+	 * this class managed the updating of parking place
+	 *
+	 */
 
+	private Logger logger = LogManager.getLogger("ParkingSpotDAO");
 	public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
 	public int getNextAvailableSlot(ParkingType parkingType) {

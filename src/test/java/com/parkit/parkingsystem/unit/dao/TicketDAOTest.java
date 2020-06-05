@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -31,6 +32,12 @@ import com.parkit.parkingsystem.model.Ticket;
 
 @ExtendWith(MockitoExtension.class)
 public class TicketDAOTest {
+
+    /**
+     * This class of unit test is testing all the methods of TicketDAO,
+     *
+     */
+
 
 	private static TicketDAO ticketDAO;
 
@@ -69,6 +76,7 @@ public class TicketDAOTest {
     }
 
 	@Test
+    @DisplayName("ticket saved should return same value than getTicket")
 	public void ticketSavedShouldReturnSameValueByTheGetTicketMethod() {
 
         //ACT
@@ -87,7 +95,8 @@ public class TicketDAOTest {
 	}
 	
 	@Test
-	public void updateTicketShouldReturnDifferentValueThanPreviousTicket() {
+    @DisplayName("ticket update should return different value than previous ticket")
+	public void ticketUpdateShouldReturnDifferentValueThanPreviousTicket() {
 
         //ACT
         Boolean test = ticketDAO.saveTicket(ticket);
@@ -99,7 +108,8 @@ public class TicketDAOTest {
 	}
 
 	@Test
-	public void shouldReturnException_WhenDBConnectionFail() throws ClassNotFoundException, SQLException {
+    @DisplayName("ticket not saved with vehicule number already recorded, boolean should return False")
+	public void ticketNotSavedWhenDBConnectionFailShouldReturnException() throws ClassNotFoundException, SQLException {
 		
 		// GIVEN
         TicketDAO ticketDAO3 = new TicketDAO();
@@ -117,7 +127,8 @@ public class TicketDAOTest {
 	}
 
     @Test
-    public void shouldReturnFalseIfAVehicleNumberIsRecordedTwice() {
+    @DisplayName("ticket saved with vehicule number already recorded, boolean should return False")
+    public void ticketSavedWithVehicleNumberRecordedTwiceShouldReturnFalseBoolean() {
         //ARRANGE
         ticketDAO.saveTicket(ticket);
         // ACT
@@ -128,7 +139,8 @@ public class TicketDAOTest {
     }
 
     @Test
-    public void shouldReturnTrueIfOccurrenceSupTo1For5PercentReduction() throws SQLException, ClassNotFoundException {
+    @DisplayName("ticket saved with occurrence Superior to 1, boolean 5PercentReduction should return True")
+    public void ticketSavedWithOccurrenceSupTo1For5PercentReductionShouldReturnTrue() throws SQLException, ClassNotFoundException {
         //ARRANGE
         ticketDAO.saveTicket(ticket);
         Ticket ticket2 = ticketDAO.getTicket(regNumberString);

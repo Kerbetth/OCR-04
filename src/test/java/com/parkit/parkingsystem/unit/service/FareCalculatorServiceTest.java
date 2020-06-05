@@ -22,7 +22,10 @@ import com.parkit.parkingsystem.service.FareCalculatorService;
 
 @Tag("Fare_Tests")
 public class FareCalculatorServiceTest {
-
+	/**
+	 * This class of unit tests is testing all the methods of FareCalculatorService,
+	 * the 2 lest tests has been added in order to test the new functions added following the user stories
+	 */
 
 	private static FareCalculatorService fareCalculatorService;
 
@@ -153,11 +156,10 @@ public class FareCalculatorServiceTest {
 	}
 
 	@Test
-	@DisplayName("Verify that less than 30 minutes parkingtime is free")
-	public void verifyLessThan30MinutesParkingTimeFree() throws ClassNotFoundException, SQLException {
+	@DisplayName("Calculate the fare price according that less than 30 minutes parkingtime is free")
+	public void calculateFareAndVerifyLessThan30MinutesParkingTimeFree() throws ClassNotFoundException, SQLException {
 		Date inTime = new Date();
-		inTime.setTime(System.currentTimeMillis() - (20 * 60 * 1000));// 45 minutes parking time should give 3/4th
-																		// parking fare
+		inTime.setTime(System.currentTimeMillis() - (20 * 60 * 1000));
 		Date outTime = new Date();
 		ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 		ticket.setInTime(inTime);
@@ -170,8 +172,8 @@ public class FareCalculatorServiceTest {
 	}
 
 	@Test
-	@DisplayName("verify 5% redution is applicated")
-	public void numberOccurencesDBQuery() throws ClassNotFoundException, SQLException {
+	@DisplayName("Calculate the fare price and verify 5% redution is applicated")
+	public void calculateFareAndShouldReturnAFivePercentReduction() throws ClassNotFoundException, SQLException {
 		Date inTime = new Date();
 		inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
 		Date outTime = new Date();

@@ -3,10 +3,7 @@ package com.parkit.parkingsystem.integration.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,6 +20,10 @@ import java.sql.SQLException;
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
 
+	/**
+	 * This class contain the integration tests that execute the whole application
+	 *
+	 */
 
 	private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 	private static ParkingSpotDAO parkingSpotDAO;
@@ -59,9 +60,9 @@ public class ParkingDataBaseIT {
 
 
 	@Test
+	@DisplayName("test if the process of parking a car is well done")
 	public void testParkingACar() {
 		ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-		// int parkingPlace = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
 		parkingService.processIncomingVehicle();
 		ticket = ticketDAO.getTicket(regNumberString);
 		System.out.println(ticketDAO.getTicket(regNumberString));
@@ -71,6 +72,7 @@ public class ParkingDataBaseIT {
 
 
 	@Test
+	@DisplayName("test if the process of exit a car is well done")
 	public void testParkingLotExit() throws InterruptedException {
 		ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 		when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn(regNumberString);
@@ -87,6 +89,7 @@ public class ParkingDataBaseIT {
 	}
 
 	@Test
+	@DisplayName("test if the process of reduction on farePrice is well done")
 	public void testRecurrentVehicleReductionAvailable() throws InterruptedException, SQLException, ClassNotFoundException {
 		//ARRANGE
 		ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);

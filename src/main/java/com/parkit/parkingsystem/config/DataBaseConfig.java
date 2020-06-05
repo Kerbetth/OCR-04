@@ -12,7 +12,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class DataBaseConfig {
-
+    /**
+     * This class have the method that allow the connection with the database
+     * A credential system has benn implemented in order to get a more secure code
+     *
+     */
     private static final Logger logger = LogManager.getLogger("DataBaseConfig");
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {

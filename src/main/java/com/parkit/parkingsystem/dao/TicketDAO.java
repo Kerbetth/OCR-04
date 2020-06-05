@@ -16,7 +16,10 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 
 public class TicketDAO {
-
+	/**
+	 * this class managed the recording and updating of the tickets
+	 * 2 methods has been added in order to manage the new function implemented
+	 */
 	private Logger logger = LogManager.getLogger("TicketDAO");
 
 

@@ -6,7 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class InputReaderUtil {
-
+	/**
+	 * This class managed the way the user input should be recognize and treated
+	 *
+	 */
 	private static Scanner scan = new Scanner(System.in, "UTF-8");
 	private static final Logger logger = LogManager.getLogger("InputReaderUtil");
 

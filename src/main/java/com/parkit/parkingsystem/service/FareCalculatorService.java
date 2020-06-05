@@ -7,6 +7,16 @@ import com.parkit.parkingsystem.model.Ticket;
 
 public class FareCalculatorService {
 
+	/**
+	 * This class calculate the fare price when the vehicule exit the parking
+	 * The 2 functions demanded have been implemented in the following method
+	 * Their was a bug in the method due to the using of hours in the current time as the computing value
+	 * this was a problem, because if a car stay more than one day, the function cannot cumulate the hours
+	 * in addition, this method was not just enough to knowing if the vehicule is available for free fare
+	 * so, instead, the function now get the time in an absolute value in millisecond
+	 * which allow a far more safe and just calculation of the time
+	 *
+	 */
 
 	public void calculateFare(Ticket ticket, Boolean availableReduction) throws ClassNotFoundException, SQLException {
 		if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {

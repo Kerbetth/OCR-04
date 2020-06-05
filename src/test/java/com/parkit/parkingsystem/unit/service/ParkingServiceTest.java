@@ -39,6 +39,13 @@ import com.parkit.parkingsystem.util.InputReaderUtil;
 @ExtendWith(MockitoExtension.class)
 public class ParkingServiceTest {
 
+	/**
+	 * This class of unit test is testing all the methods of ParkingService,
+	 * 2 last test has been added, one for testing the correct management of incoming/exiting vehicule,
+	 * another another to test the execption
+	 *
+	 */
+
 	private static ParkingService parkingService;
 	@Mock
     private static Logger testlogger = LogManager.getLogger("ParkingService");
@@ -58,6 +65,8 @@ public class ParkingServiceTest {
 	private static String regNumberString;
 	@Mock
 	private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+
+
 
 	@BeforeEach
 	private void setup() {
@@ -142,7 +151,7 @@ public class ParkingServiceTest {
 
     @Test
     @DisplayName("the same parking spot should turn to true during exiting then false during incoming")
-	public void incomingVehiculeCouldTakeTheSameParkingSpotThanTheSameExitingVehicule() throws ClassNotFoundException, SQLException{
+	public void processIncomingVehiculeCouldTakeTheSameParkingSpotThanTheSameExitingVehicule() throws ClassNotFoundException, SQLException{
 		 
 	//GIVEN
 	 when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
@@ -174,7 +183,7 @@ public class ParkingServiceTest {
 
 	@Test
 	@DisplayName("Should return exception if out-time is earlier than in-time")
-	public void shouldReturnException_ForOutimeBeforeIntimeAtExit() {
+	public void processExitingVehicleShouldReturnException_ForOutimeBeforeIntimeAtExit() {
 		// GIVEN
 		ticket.setInTime(new Date(System.currentTimeMillis() + (60 * 60 * 1000)));
 		when(ticketDAO.getTicket(regNumberString)).thenThrow(new RuntimeException());

@@ -8,6 +8,9 @@ import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 
 public class InteractiveShell {
+	/**
+	 * this class managed the interface with the following option available
+	 */
 
 	private static InputReaderUtil inputReaderUtil = new InputReaderUtil();
 	private static ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
